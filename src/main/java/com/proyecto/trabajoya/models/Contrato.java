@@ -2,7 +2,6 @@ package com.proyecto.trabajoya.models;
 
 import java.sql.Time;
 import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

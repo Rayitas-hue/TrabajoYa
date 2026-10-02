@@ -1,7 +1,6 @@
 package com.proyecto.trabajoya.models;
 
 import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
@@ -19,6 +18,9 @@ public class CategoriaServicio {
     @Column(name = "id_categoria_servicio")
     private int idCategoriaServicio;
 
+    @Column (nullable = false, length = 6)
+    private String codigo;
+
     @Column (nullable = false, length = 50)
     private String nombre;
 
@@ -32,14 +34,17 @@ public class CategoriaServicio {
     public CategoriaServicio() {
     }
 
-    public CategoriaServicio(String nombre, String descripcion, List<Servicio> servicio) {
+    public CategoriaServicio(int idCategoriaServicio, String codigo, String nombre, String descripcion,
+            List<Servicio> servicio) {
+        this.idCategoriaServicio = idCategoriaServicio;
+        this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.servicio = servicio;
     }
 
-    public CategoriaServicio(int idCategoriaServicio, String nombre, String descripcion, List<Servicio> servicio) {
-        this.idCategoriaServicio = idCategoriaServicio;
+    public CategoriaServicio(String codigo, String nombre, String descripcion, List<Servicio> servicio) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.servicio = servicio;
@@ -51,6 +56,14 @@ public class CategoriaServicio {
 
     public void setIdCategoriaServicio(int idCategoriaServicio) {
         this.idCategoriaServicio = idCategoriaServicio;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -76,10 +89,4 @@ public class CategoriaServicio {
     public void setServicio(List<Servicio> servicio) {
         this.servicio = servicio;
     }
-
-    
-
-    
-
-    
 }

@@ -18,6 +18,12 @@ public class Calificacion {
     @Column (name = "id_calificacion")
     private int idCalificacion;
 
+    @Column (nullable = false)
+    private String codigo;
+
+    @Column (nullable = false)
+    private Integer idContrato;
+
     //esto No es una foranea, se extrae del contrato
     @Column (nullable = false)
     private Integer idUsuarioEmisor;
@@ -48,8 +54,11 @@ public class Calificacion {
     public Calificacion() {
     }
 
-    public Calificacion(Integer idUsuarioEmisor, Integer idUsuarioReceptor, int puntuacion,
-            String comentario, String evidencia, Contrato contrato) {
+    public Calificacion(int idCalificacion, String codigo, Integer idContrato, Integer idUsuarioEmisor,
+            Integer idUsuarioReceptor, int puntuacion, String comentario, String evidencia, Contrato contrato) {
+        this.idCalificacion = idCalificacion;
+        this.codigo = codigo;
+        this.idContrato = idContrato;
         this.idUsuarioEmisor = idUsuarioEmisor;
         this.idUsuarioReceptor = idUsuarioReceptor;
         this.puntuacion = puntuacion;
@@ -58,9 +67,10 @@ public class Calificacion {
         this.contrato = contrato;
     }
 
-    public Calificacion(int idCalificacion, Integer idUsuarioEmisor, Integer idUsuarioReceptor,
+    public Calificacion(String codigo, Integer idContrato, Integer idUsuarioEmisor, Integer idUsuarioReceptor,
             int puntuacion, String comentario, String evidencia, Contrato contrato) {
-        this.idCalificacion = idCalificacion;
+        this.codigo = codigo;
+        this.idContrato = idContrato;
         this.idUsuarioEmisor = idUsuarioEmisor;
         this.idUsuarioReceptor = idUsuarioReceptor;
         this.puntuacion = puntuacion;
@@ -75,6 +85,22 @@ public class Calificacion {
 
     public void setIdCalificacion(int idCalificacion) {
         this.idCalificacion = idCalificacion;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Integer getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(Integer idContrato) {
+        this.idContrato = idContrato;
     }
 
     public Integer getIdUsuarioEmisor() {
@@ -124,6 +150,5 @@ public class Calificacion {
     public void setContrato(Contrato contrato) {
         this.contrato = contrato;
     }
-
     
 }

@@ -2,7 +2,6 @@ package com.proyecto.trabajoya.models;
 
 import java.util.Date;
 import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +20,9 @@ public class Servicio {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id_servicio")
     private int idServicio;
+
+    @Column (nullable = false, length = 6)
+    private String codigo;
 
     @Column (nullable = false, length = 50)
     private String nombre;
@@ -60,9 +62,11 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(String nombre, String descripcion, boolean experiencia, String evidencia, double precioInicial,
-            boolean estado, Date fechaExpiracion, Usuario usuario, CategoriaServicio categoria,
-            List<Contrato> contrato) {
+    public Servicio(int idServicio, String codigo, String nombre, String descripcion, boolean experiencia,
+            String evidencia, double precioInicial, boolean estado, Date fechaExpiracion, Usuario usuario,
+            CategoriaServicio categoria, List<Contrato> contrato) {
+        this.idServicio = idServicio;
+        this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.experiencia = experiencia;
@@ -75,10 +79,10 @@ public class Servicio {
         this.contrato = contrato;
     }
 
-    public Servicio(int idServicio, String nombre, String descripcion, boolean experiencia, String evidencia,
-            double precioInicial, boolean estado, Date fechaExpiracion, Usuario usuario,
-            CategoriaServicio categoria, List<Contrato> contrato) {
-        this.idServicio = idServicio;
+    public Servicio(String codigo, String nombre, String descripcion, boolean experiencia, String evidencia,
+            double precioInicial, boolean estado, Date fechaExpiracion, Usuario usuario, CategoriaServicio categoria,
+            List<Contrato> contrato) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.experiencia = experiencia;
@@ -97,6 +101,14 @@ public class Servicio {
 
     public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -179,5 +191,4 @@ public class Servicio {
         this.contrato = contrato;
     }
 
-    
 }
